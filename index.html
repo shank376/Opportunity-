@@ -1,421 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Explorer | Discover Opportunities</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Student Explorer</title>
 
-    <meta name="description" content="Discover science competitions, scholarships, Olympiads, coding contests, hackathons, research opportunities and more.">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+<style>
+/* ===================== ROOT ===================== */
+:root{
+  --bg:#f6f8fc;
+  --text:#111;
+  --card:#fff;
+  --primary:#4f46e5;
+  --shadow:0 10px 30px rgba(0,0,0,0.08);
+}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+body.dark{
+  --bg:#0f172a;
+  --text:#fff;
+  --card:#1e293b;
+  --shadow:0 10px 30px rgba(0,0,0,0.4);
+}
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+body{
+  margin:0;
+  font-family:Poppins;
+  background:var(--bg);
+  color:var(--text);
+  transition:0.3s;
+}
+
+/* ===================== NAV ===================== */
+nav{
+  display:flex;
+  justify-content:space-between;
+  padding:15px 30px;
+  position:fixed;
+  width:100%;
+  top:0;
+  background:rgba(255,255,255,0.1);
+  backdrop-filter:blur(10px);
+}
+
+.logo{
+  font-weight:700;
+  color:var(--primary);
+}
+
+/* ===================== HERO ===================== */
+.hero{
+  padding:120px 20px 60px;
+  text-align:center;
+}
+
+.hero h1{
+  font-size:2.5rem;
+}
+
+.search-box{
+  margin-top:20px;
+}
+
+input,select,button{
+  padding:12px;
+  margin:5px;
+  border-radius:10px;
+  border:none;
+}
+
+button{
+  background:var(--primary);
+  color:white;
+  cursor:pointer;
+}
+
+/* ===================== CARDS ===================== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+  padding:20px;
+}
+
+.card{
+  background:var(--card);
+  padding:20px;
+  border-radius:15px;
+  box-shadow:var(--shadow);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+/* ===================== BUTTON ===================== */
+.apply{
+  display:inline-block;
+  margin-top:10px;
+  padding:10px 15px;
+  background:var(--primary);
+  color:white;
+  border-radius:8px;
+}
+
+/* ===================== TOGGLE ===================== */
+.toggle{
+  cursor:pointer;
+  background:transparent;
+  color:var(--text);
+  font-size:18px;
+}
+
+/* ===================== FOOTER ===================== */
+footer{
+  text-align:center;
+  padding:30px;
+  margin-top:40px;
+  background:var(--card);
+}
+</style>
 </head>
+
 <body>
 
-    <!-- ========================= -->
-    <!-- LOADER -->
-    <!-- ========================= -->
-    <div id="loader">
-        <div class="loader-content">
-            <div class="spinner"></div>
-            <h2>Student Explorer</h2>
-        </div>
-    </div>
-
-    <!-- ========================= -->
-    <!-- BACK TO TOP -->
-    <!-- ========================= -->
-    <button id="backToTop">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- ========================= -->
-    <!-- NAVBAR -->
-    <!-- ========================= -->
-    <header class="navbar">
-
-        <div class="logo">
-            <i class="fas fa-rocket"></i>
-            <span>Student Explorer</span>
-        </div>
-
-        <nav id="navLinks">
-            <a href="#hero">Home</a>
-            <a href="#featured">Opportunities</a>
-            <a href="#categories">Categories</a>
-            <a href="#search">Search</a>
-            <a href="#stats">Statistics</a>
-            <a href="#newsletter">Newsletter</a>
-        </nav>
-
-        <div class="nav-actions">
-
-            <!-- Dark Mode -->
-            <button id="themeToggle" class="theme-btn">
-                <i class="fas fa-moon"></i>
-            </button>
-
-            <!-- Mobile Menu -->
-            <button id="menuBtn" class="menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
-
-        </div>
-
-    </header>
-
-    <!-- ========================= -->
-    <!-- HERO SECTION -->
-    <!-- ========================= -->
-    <section id="hero" class="hero">
-
-        <div class="hero-content">
-
-            <div class="hero-badge">
-                🚀 Explore Global Opportunities
-            </div>
-
-            <h1>
-                Discover Opportunities.
-                <br>
-                Build Your Future.
-            </h1>
-
-            <p>
-                Find scholarships, Olympiads, hackathons, ISRO programs,
-                coding competitions, research internships, science camps,
-                workshops, and much more.
-            </p>
-
-            <div class="hero-search">
-
-                <input
-                        type="text"
-                        id="heroSearch"
-                        placeholder="Search opportunities..."
-                >
-
-                <button id="heroSearchBtn">
-                    Search
-                </button>
-
-            </div>
-
-            <div class="hero-buttons">
-
-                <a href="#featured" class="primary-btn">
-                    Explore Opportunities
-                </a>
-
-                <a href="#newsletter" class="secondary-btn">
-                    Join Newsletter
-                </a>
-
-            </div>
-
-        </div>
-
-        <div class="hero-visual">
-
-            <div class="glass-card card1">
-                <i class="fas fa-satellite"></i>
-                <h3>ISRO Programs</h3>
-            </div>
-
-            <div class="glass-card card2">
-                <i class="fas fa-trophy"></i>
-                <h3>Olympiads</h3>
-            </div>
-
-            <div class="glass-card card3">
-                <i class="fas fa-laptop-code"></i>
-                <h3>Hackathons</h3>
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- ========================= -->
-    <!-- FEATURED OPPORTUNITIES -->
-    <!-- ========================= -->
-    <section id="featured" class="featured-section">
-
-        <div class="section-header">
-            <h2>Featured Opportunities</h2>
-            <p>
-                Handpicked opportunities for ambitious students.
-            </p>
-        </div>
-
-        <div id="featuredContainer" class="opportunities-grid">
-
-            <!-- JS Generated Cards -->
-
-        </div>
-
-    </section>
-
-    <!-- ========================= -->
-    <!-- CATEGORIES -->
-    <!-- ========================= -->
-    <section id="categories" class="categories-section">
-
-        <div class="section-header">
-            <h2>Explore Categories</h2>
-            <p>
-                Discover opportunities based on your interests.
-            </p>
-        </div>
-
-        <div class="categories-grid">
-
-            <div class="category-card">
-                <i class="fas fa-satellite"></i>
-                <h3>Space Science</h3>
-            </div>
-
-            <div class="category-card">
-                <i class="fas fa-medal"></i>
-                <h3>Olympiads</h3>
-            </div>
-
-            <div class="category-card">
-                <i class="fas fa-graduation-cap"></i>
-                <h3>Scholarships</h3>
-            </div>
-
-            <div class="category-card">
-                <i class="fas fa-code"></i>
-                <h3>Coding</h3>
-            </div>
-
-            <div class="category-card">
-                <i class="fas fa-robot"></i>
-                <h3>AI</h3>
-            </div>
-
-            <div class="category-card">
-                <i class="fas fa-microscope"></i>
-                <h3>Research</h3>
-            </div>
-
-            <div class="category-card">
-                <i class="fas fa-chalkboard-user"></i>
-                <h3>Workshops</h3>
-            </div>
-
-            <div class="category-card">
-                <i class="fas fa-lightbulb"></i>
-                <h3>Hackathons</h3>
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- ========================= -->
-    <!-- SEARCH & FILTER -->
-    <!-- ========================= -->
-    <section id="search" class="search-section">
-
-        <div class="section-header">
-            <h2>Search Opportunities</h2>
-            <p>
-                Find exactly what you're looking for.
-            </p>
-        </div>
-
-        <div class="search-panel">
-
-            <input
-                    type="text"
-                    id="searchInput"
-                    placeholder="Search by title or keyword..."
-            >
-
-            <select id="categoryFilter">
-                <option value="">All Categories</option>
-                <option value="Space Science">Space Science</option>
-                <option value="Olympiad">Olympiad</option>
-                <option value="Scholarship">Scholarship</option>
-                <option value="Coding">Coding</option>
-                <option value="AI">AI</option>
-                <option value="Research">Research</option>
-                <option value="Workshop">Workshop</option>
-                <option value="Hackathon">Hackathon</option>
-            </select>
-
-            <select id="classFilter">
-                <option value="">All Classes</option>
-                <option value="6-8">Class 6-8</option>
-                <option value="9-10">Class 9-10</option>
-                <option value="11-12">Class 11-12</option>
-                <option value="College">College</option>
-            </select>
-
-            <input type="date" id="deadlineFilter">
-
-        </div>
-
-        <div id="searchResults" class="opportunities-grid">
-
-            <!-- Dynamic Cards -->
-
-        </div>
-
-    </section>
-
-    <!-- ========================= -->
-    <!-- STATISTICS -->
-    <!-- ========================= -->
-    <section id="stats" class="stats-section">
-
-        <div class="section-header">
-            <h2>Growing Student Community</h2>
-        </div>
-
-        <div class="stats-grid">
-
-            <div class="stat-card">
-                <h3 id="opportunitiesCount">0</h3>
-                <p>Opportunities Listed</p>
-            </div>
-
-            <div class="stat-card">
-                <h3>25K+</h3>
-                <p>Active Students</p>
-            </div>
-
-            <div class="stat-card">
-                <h3>500+</h3>
-                <p>Scholarships</p>
-            </div>
-
-            <div class="stat-card">
-                <h3>1200+</h3>
-                <p>Competitions</p>
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- ========================= -->
-    <!-- NEWSLETTER -->
-    <!-- ========================= -->
-    <section id="newsletter" class="newsletter-section">
-
-        <div class="newsletter-box">
-
-            <h2>
-                Never Miss an Opportunity
-            </h2>
-
-            <p>
-                Get weekly updates on scholarships,
-                competitions, internships and more.
-            </p>
-
-            <form id="newsletterForm">
-
-                <input
-                        type="email"
-                        placeholder="Enter your email"
-                        required
-                >
-
-                <button type="submit">
-                    Subscribe
-                </button>
-
-            </form>
-
-            <p id="newsletterMessage"></p>
-
-        </div>
-
-    </section>
-
-    <!-- ========================= -->
-    <!-- FOOTER -->
-    <!-- ========================= -->
-    <footer>
-
-        <div class="footer-grid">
-
-            <div class="footer-column">
-
-                <h3>Student Explorer</h3>
-
-                <p>
-                    Helping students discover opportunities
-                    that shape their future.
-                </p>
-
-            </div>
-
-            <div class="footer-column">
-
-                <h3>About</h3>
-
-                <a href="#">About Us</a>
-                <a href="#">Mission</a>
-                <a href="#">Careers</a>
-
-            </div>
-
-            <div class="footer-column">
-
-                <h3>Support</h3>
-
-                <a href="#">Contact</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms</a>
-
-            </div>
-
-            <div class="footer-column">
-
-                <h3>Social</h3>
-
-                <div class="social-icons">
-
-                    <a href="#">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-
-                    <a href="#">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-
-                    <a href="#">
-                        <i class="fab fa-x-twitter"></i>
-                    </a>
-
-                    <a href="#">
-                        <i class="fab fa-github"></i>
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="footer-bottom">
-            © 2026 Student Explorer. All Rights Reserved.
-        </div>
-
-    </footer>
-
-    <script src="script.js"></script>
+<!-- NAV -->
+<nav>
+  <div class="logo">Student Explorer</div>
+  <button class="toggle" onclick="toggleTheme()">🌙</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Discover Opportunities. Build Your Future.</h1>
+
+  <div class="search-box">
+    <input id="search" placeholder="Search opportunities..."/>
+    <select id="filter">
+      <option value="">All</option>
+      <option value="Coding">Coding</option>
+      <option value="Scholarship">Scholarship</option>
+      <option value="Olympiad">Olympiad</option>
+      <option value="Hackathon">Hackathon</option>
+      <option value="Research">Research</option>
+    </select>
+    <button onclick="render()">Search</button>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="grid" id="list"></section>
+
+<!-- FOOTER -->
+<footer>
+  © 2026 Student Explorer
+</footer>
+
+<script>
+/* ===================== DATA ===================== */
+const data = [
+  {
+    title:"ISRO YUVIKA Program",
+    category:"Research",
+    eligibility:"Class 9",
+    deadline:"2026-03-15",
+    description:"Learn space science with ISRO scientists.",
+    link:"#"
+  },
+  {
+    title:"Google Coding Challenge",
+    category:"Coding",
+    eligibility:"All Students",
+    deadline:"2026-06-10",
+    description:"Competitive programming contest.",
+    link:"#"
+  },
+  {
+    title:"National Science Olympiad",
+    category:"Olympiad",
+    eligibility:"Class 1-12",
+    deadline:"2026-08-20",
+    description:"Science reasoning competition.",
+    link:"#"
+  },
+  {
+    title:"Smart India Hackathon",
+    category:"Hackathon",
+    eligibility:"College Students",
+    deadline:"2026-09-01",
+    description:"Solve real world problems.",
+    link:"#"
+  },
+  {
+    title:"INSPIRE Scholarship",
+    category:"Scholarship",
+    eligibility:"Class 12",
+    deadline:"2026-10-10",
+    description:"Government science scholarship.",
+    link:"#"
+  }
+];
+
+/* ===================== RENDER ===================== */
+function render(){
+  const search = document.getElementById("search").value.toLowerCase();
+  const filter = document.getElementById("filter").value;
+
+  const list = document.getElementById("list");
+  list.innerHTML = "";
+
+  data
+  .filter(item =>
+    item.title.toLowerCase().includes(search) &&
+    (filter === "" || item.category === filter)
+  )
+  .forEach(item => {
+    list.innerHTML += `
+      <div class="card">
+        <h3>${item.title}</h3>
+        <p><b>Category:</b> ${item.category}</p>
+        <p><b>Eligibility:</b> ${item.eligibility}</p>
+        <p><b>Deadline:</b> ${item.deadline}</p>
+        <p>${item.description}</p>
+        <a class="apply" href="${item.link}">Apply</a>
+      </div>
+    `;
+  });
+}
+
+/* ===================== THEME ===================== */
+function toggleTheme(){
+  document.body.classList.toggle("dark");
+}
+
+/* INIT */
+render();
+</script>
 
 </body>
 </html>
